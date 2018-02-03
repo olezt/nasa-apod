@@ -66,7 +66,7 @@
         <version>${tomcat7-maven-plugin.version}</version>
         <configuration>
           <port>9090</port>
-          <path>/randomedquote</path>
+          <path>/whoquoted</path>
         </configuration>
       </plugin>
     </plugins>

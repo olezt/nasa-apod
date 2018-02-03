@@ -9,6 +9,17 @@
 	padding-left: 15px;
 }
 
+.random-quote-index-container{
+	background: url('../images/skype_bubble.png') no-repeat center /cover;
+	background-size: 90%;
+	position: absolute;
+	width: 25%;
+	height: 30%;
+	top:35%;
+	left:25%;
+	padding-left: 15px;
+}
+
 .user-image-container{
 	position: absolute;
 	width: 6%;
@@ -51,4 +62,12 @@
 .quote-user{
 	font-size: 20px;
 	padding-left: 80%;
+}
+
+.random-quote-index-button{
+	position: absolute;
+	height: 30%;
+	top:40%;
+	left:10%;
+	font-size: 2vw;
 }
