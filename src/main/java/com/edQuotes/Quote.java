@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.faces.bean.ManagedBean;
 //import javax.faces.event.ActionEvent;
@@ -47,7 +48,8 @@ public class Quote {
 	}
 	
 	public void setDateFromString(String stringDate) {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:MM");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		dateFormat.setTimeZone(getGreekTimeZone());
 		Date date = null;
 		try {
 			date = dateFormat.parse(stringDate);
@@ -57,6 +59,10 @@ public class Quote {
 		setDate(date);
 	}
 	
+	public TimeZone getGreekTimeZone(){
+		TimeZone tz = TimeZone.getTimeZone("Athens/Greece");
+		return tz;
+	}
 	
 	public void initRandomQuote(){
 		QuoteEnum qe = QuoteEnum.getRandomQuote();
