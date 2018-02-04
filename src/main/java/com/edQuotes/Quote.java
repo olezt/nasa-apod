@@ -9,44 +9,21 @@ import java.util.TimeZone;
 import javax.faces.bean.ManagedBean;
 //import javax.faces.event.ActionEvent;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @ManagedBean
 public class Quote {
 
-	private String text;
-	private String user;
-	private String userLowerCase;
-	private Date date;
+	@Getter @Setter private String text;
+	@Getter @Setter private String user;
+	@Getter @Setter private String userLowerCase;
+	@Getter @Setter private Date date;
   
 	public Quote() {
 		initRandomQuote();
 	}
-	
-	public String getText() {
-		return text;
-	}
-	public void setText(String text) {
-		this.text = text;
-	}
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
-	public String getUserLowerCase() {
-		return userLowerCase;
-	}
 
-	public void setUserLowerCase(String userLowerCase) {
-		this.userLowerCase = userLowerCase;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
 	public void setDateFromString(String stringDate) {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		dateFormat.setTimeZone(getGreekTimeZone());
