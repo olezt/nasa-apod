@@ -15,5 +15,11 @@
 		<div class="random-quote-index-container">
 	    	<h:link  class="random-quote-index-button" outcome="randomQuote.xhtml" value="Get your random Quote"/>
 		</div>
+		
+		<h:form>
+			<p:commandLink id="downloadAllQuotesPDF" action="#{downloadController.downloadAllQuotesPDF}" ajax="false">
+				<h:graphicImage value="images/download_all.png" class="download-all-quotes-pdf"/>
+			</p:commandLink>
+		</h:form>
 	</h:body>
 </html>
