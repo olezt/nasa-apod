@@ -1,7 +1,9 @@
-package com.edQuotes;
+package com.whoQuoted.enums;
 
 import java.util.Date;
 import java.util.Random;
+
+import com.whoQuoted.Constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -27,13 +27,13 @@
          </script>
 	
 		<div class="random-quote-container">
-	    	<b><h:outputText value="#{quote.text}" name="quoteText" id="quoteText" class="quote-text"/></b><br/>
+	    	<b><h:outputText value="#{randomQuote.text}" name="quoteText" id="quoteText" class="quote-text"/></b><br/>
 		</div>
 		<div class="user-image-container">
-			<h:graphicImage class="user-image" value="images/#{quote.userLowerCase}.png" />
+			<h:graphicImage class="user-image" value="images/#{randomQuote.userLowerCase}.png" />
 		</div>
 		<div class="date-container">
-			<h:outputText value="#{quote.date}" name="quoteDate" id="quoteDate" class="quote-date">
+			<h:outputText value="#{randomQuote.date}" name="quoteDate" id="quoteDate" class="quote-date">
 				<f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
 			</h:outputText>
 		</div>

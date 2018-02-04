@@ -1,4 +1,4 @@
-package com.edQuotes;
+package com.whoQuoted;
 
 public final class Constants {
 

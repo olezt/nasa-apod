@@ -1,4 +1,4 @@
-package com.edQuotes;
+package com.whoQuoted.controllers;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,20 +7,21 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import javax.faces.bean.ManagedBean;
-//import javax.faces.event.ActionEvent;
+
+import com.whoQuoted.enums.QuoteEnum;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @ManagedBean
-public class Quote {
+public class RandomQuote {
 
 	@Getter @Setter private String text;
 	@Getter @Setter private String user;
 	@Getter @Setter private String userLowerCase;
 	@Getter @Setter private Date date;
   
-	public Quote() {
+	public RandomQuote() {
 		initRandomQuote();
 	}
 
