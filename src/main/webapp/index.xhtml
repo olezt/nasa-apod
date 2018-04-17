@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://java.sun.com/jsf/html"
   xmlns:p="http://primefaces.org/ui"
-  xmlns:f = "http://java.sun.com/jsf/core">
-
+  xmlns:f = "http://java.sun.com/jsf/core"
+  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 	
 	<h:head>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -16,20 +16,38 @@
 	    	<b><h:outputText value="#{apodController.apod.title}" name="apodTitle" id="apodTitle" class="apod-title"/></b><br/>
 		</div>
 		<div class="apod-date-container">
-	    	<b><h:outputText value="#{apodController.apod.date}" name="apodDate" id="apodDate" class="apod-date"/></b><br/>
+			<h:form>
+				<div class="ui-grid">
+					<div class="ui-grid-col-6">
+						<p:calendar name="apodDate" id="apodDate" class="apod-date" value="#{apodController.apod.date}" pattern="yyyy-MM-dd" mode="popup">
+							<p:ajax event="dateSelect" listener="#{apodController.onDateSelect}" update="apodImageVideo apodTitle apodExplanation"/>
+						</p:calendar>
+					</div>
+					<div class="ui-grid-col-6">
+						<p:commandLink id="downloadApodPDF" action="#{downloadController.downloadApodPDF}" ajax="false">
+							<h:graphicImage value="images/download_apod.png" class="download-apod-pdf"/>
+						</p:commandLink>
+					</div>
+				</div>
+			</h:form>
 		</div>
 		
 		<div class="apod-image-container">
-			<h:graphicImage class="apod-image" value="#{apodController.apod.url}" />
-		</div>
+			<h:panelGroup id="apodImageVideo">
+				<c:choose>
+					<c:when test="#{apodController.apod.media_type=='image'}">
+						<h:graphicImage class="apod-image" url="#{apodController.apod.url}" id="apodImage"/>
+					</c:when>
+					<c:when test="#{apodController.apod.media_type=='video'}">
+						<iframe width="100%" height="600" src="#{apodController.apod.url}" frameborder="0" allowfullscreen="true" id="apodVideo"></iframe>
+					</c:when>
+				</c:choose>
+			</h:panelGroup>
+		</div>	
+		
 		<div class="apod-explanation-container">
 	    	<b><h:outputText value="#{apodController.apod.explanation}" name="apodExplanation" id="apodExplanation" class="apod-explanation"/></b><br/>
 		</div>
 
-		<h:form>
-			<p:commandLink id="downloadApodPDF" action="#{downloadController.downloadApodPDF}" ajax="false">
-				<h:graphicImage value="images/download_apod.png" class="download-apod-pdf"/>
-			</p:commandLink>
-		</h:form>
 	</h:body>
 </html>
