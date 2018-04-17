@@ -1,78 +1,60 @@
-.random-quote-container{
-	background: url('../images/skype_bubble.png') no-repeat center /cover;
-	background-size: 90%;
-	position: absolute;
-	width: 41%;
-	height: 30%;
-	top:35%;
-	left:25%;
-	padding-left: 15px;
+/**
+ * Apod image
+ */
+.apod-image-container{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	top:5%;
 }
 
-.random-quote-index-container{
-	background: url('../images/skype_bubble.png') no-repeat center /cover;
-	background-size: 90%;
-	position: absolute;
-	width: 25%;
-	height: 30%;
-	top:35%;
-	left:25%;
-	padding-left: 15px;
-}
-
-.user-image-container{
-	position: absolute;
-	width: 6%;
-	top:44%;
-	left:66%;
-	padding-left: 15px;
-}
-
-.date-container{
-	position: absolute;
-	width: 41%;
-	height: 25px;
-	top:55%;
-	left:25%;
-}
-
-.quote-date{
-	position: absolute;
-	height: 30%;
-	top:35%;
-	bottom: 35%;
-	right: 6%;
-	font-size: 1vw;
-}
-
-.user-image{
+.apod-image{
 	width: 100%;
 	height: auto;
 }
 
-.quote-text{
-	position: absolute;
-	height: 30%;
-	top:35%;
-	bottom: 35%;
-	left:10%;
+/**
+ * Apod title
+ */
+.apod-title-container{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.apod-title{
+	text-align: center;
 	font-size: 4vw;
 }
 
-.quote-user{
-	font-size: 20px;
-	padding-left: 80%;
+/**
+ * Apod explanation
+ */
+.apod-explanation-container{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
 }
 
-.random-quote-index-button{
-	position: absolute;
-	height: 30%;
-	top:40%;
-	left:10%;
+/**
+ * Apod date
+ */
+.apod-date-container{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.apod-date{
+	text-align: center;
 	font-size: 2vw;
 }
 
-.download-all-quotes-pdf{
+/**
+ * Download
+ */
+.download-apod-pdf{
 	position: absolute;
 	width: 50px;
 	height: 50px;

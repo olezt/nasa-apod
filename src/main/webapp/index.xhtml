@@ -8,17 +8,27 @@
 	
 	<h:head>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	  	<title>ED Quotes</title>
+	  	<title>NASA Apod</title>
 	</h:head>
 	
 	<h:body>
-		<div class="random-quote-index-container">
-	    	<h:link  class="random-quote-index-button" outcome="randomQuote.xhtml" value="Get your random Quote"/>
+		<div class="apod-title-container">
+	    	<b><h:outputText value="#{apodController.apod.title}" name="apodTitle" id="apodTitle" class="apod-title"/></b><br/>
+		</div>
+		<div class="apod-date-container">
+	    	<b><h:outputText value="#{apodController.apod.date}" name="apodDate" id="apodDate" class="apod-date"/></b><br/>
 		</div>
 		
+		<div class="apod-image-container">
+			<h:graphicImage class="apod-image" value="#{apodController.apod.url}" />
+		</div>
+		<div class="apod-explanation-container">
+	    	<b><h:outputText value="#{apodController.apod.explanation}" name="apodExplanation" id="apodExplanation" class="apod-explanation"/></b><br/>
+		</div>
+
 		<h:form>
-			<p:commandLink id="downloadAllQuotesPDF" action="#{downloadController.downloadAllQuotesPDF}" ajax="false">
-				<h:graphicImage value="images/download_all.png" class="download-all-quotes-pdf"/>
+			<p:commandLink id="downloadApodPDF" action="#{downloadController.downloadApodPDF}" ajax="false">
+				<h:graphicImage value="images/download_apod.png" class="download-apod-pdf"/>
 			</p:commandLink>
 		</h:form>
 	</h:body>

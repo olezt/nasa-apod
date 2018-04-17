@@ -57,6 +57,11 @@
 	    <artifactId>itext</artifactId>
 	    <version>2.1.7</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>5.0.5.RELEASE</version>
+	</dependency>
   </dependencies>
 
   <build>
@@ -77,7 +82,7 @@
         <version>${tomcat7-maven-plugin.version}</version>
         <configuration>
           <port>9090</port>
-          <path>/whoquoted</path>
+          <path>/nasaapod</path>
         </configuration>
       </plugin>
     </plugins>
