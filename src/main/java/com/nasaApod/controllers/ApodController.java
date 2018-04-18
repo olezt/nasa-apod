@@ -27,7 +27,6 @@ public class ApodController {
 
 	public void getApod(String stringDate) {
 		try {
-			System.out.println(stringDate);
 			apod = apodService.getApod(stringDate);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

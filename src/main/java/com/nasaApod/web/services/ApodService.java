@@ -16,7 +16,7 @@ public class ApodService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(Constants.APOD_API)
             .queryParam(Constants.APOD_API_KEY_PARAM_NAME, Constants.APOD_API_KEY_PARAM_VALUE)
             .queryParam(Constants.APOD_API_DATE_PARAM_NAME, stringDate);
-        System.out.println(builder.toUriString());
+
         Apod apod = restTemplate.getForObject(builder.toUriString(), Apod.class);
         return apod;
 	}
