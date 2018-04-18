@@ -19,7 +19,7 @@
 			<h:form>
 				<div class="ui-grid">
 					<div class="ui-grid-col-6">
-						<p:calendar name="apodDate" id="apodDate" class="apod-date" value="#{apodController.apod.date}" pattern="yyyy-MM-dd" mode="popup">
+						<p:calendar name="apodDate" id="apodDate" class="apod-date" value="#{apodController.apod.date}" pattern="yyyy-MM-dd" maxdate="#{apodController.maxCalendarDate}" mode="popup">
 							<p:ajax event="dateSelect" listener="#{apodController.onDateSelect}" update="apodImageVideo apodTitle apodExplanation downloadApodPDF"/>
 						</p:calendar>
 					</div>

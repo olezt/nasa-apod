@@ -1,6 +1,7 @@
 package com.nasaApod.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -19,7 +20,11 @@ import lombok.Setter;
 @ViewScoped
 public class ApodController {
 
-	@Getter @Setter private Apod apod;
+	@Getter @Setter 
+	private Apod apod;
+	
+	@Getter
+	private Date maxCalendarDate = new Date();
 	
 	@Autowired
 	ApodService apodService;
