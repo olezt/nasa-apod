@@ -2,7 +2,9 @@ package com.nasaApod.controllers;
 
 import java.text.SimpleDateFormat;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @ManagedBean
+@ViewScoped
 public class ApodController {
 
 	@Getter @Setter private Apod apod;
@@ -21,7 +24,10 @@ public class ApodController {
 	@Autowired
 	ApodService apodService;
 	
-	public ApodController() {
+	public ApodController() {}
+
+	@PostConstruct
+	public void init() {
 		getApod(null);
 	}
 
