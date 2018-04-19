@@ -1,5 +1,6 @@
 package com.nasaApod.controllers;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,7 +24,12 @@ import lombok.Setter;
 
 @ManagedBean
 @ViewScoped
-public class ApodListViewBean {
+public class ApodListViewBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Getter @Setter 
 	private List<Apod> apodList = new ArrayList<Apod>();

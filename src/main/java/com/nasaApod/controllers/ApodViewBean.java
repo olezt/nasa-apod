@@ -1,5 +1,6 @@
 package com.nasaApod.controllers;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,7 +21,12 @@ import lombok.Setter;
 
 @ManagedBean
 @ViewScoped
-public class ApodViewBean {
+public class ApodViewBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Getter @Setter 
 	private Apod apod;
