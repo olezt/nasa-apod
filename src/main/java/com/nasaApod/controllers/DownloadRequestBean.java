@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,9 +28,10 @@ import com.nasaApod.entities.Apod;
 import lombok.Cleanup;
 
 @ManagedBean
-public class DownloadController {
+@RequestScoped
+public class DownloadRequestBean {
 
-	public DownloadController() {}
+	public DownloadRequestBean() {}
 
 	/**
 	 * Create the pdf document containing the selected date's apod

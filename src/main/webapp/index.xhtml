@@ -13,20 +13,20 @@
 	
 	<h:body>
 		<div class="apod-title-container">
-	    	<b><h:outputText value="#{apodController.apod.title}" name="apodTitle" id="apodTitle" class="apod-title"/></b><br/>
+	    	<b><h:outputText value="#{apodViewBean.apod.title}" name="apodTitle" id="apodTitle" class="apod-title"/></b><br/>
 		</div>
 		<div class="apod-date-container">
 			<h:form>
 				<div class="ui-grid">
 					<div class="ui-grid-col-6">
-						<p:calendar name="apodDate" id="apodDate" class="apod-date" value="#{apodController.apod.date}" pattern="yyyy-MM-dd" maxdate="#{apodController.maxCalendarDate}" mode="popup">
-							<p:ajax event="dateSelect" listener="#{apodController.onDateSelect}" update="apodImageVideo apodTitle apodExplanation downloadApodPDF"/>
+						<p:calendar name="apodDate" id="apodDate" class="apod-date" value="#{apodViewBean.apod.date}" pattern="yyyy-MM-dd" maxdate="#{apodViewBean.maxCalendarDate}" mode="popup">
+							<p:ajax event="dateSelect" listener="#{apodViewBean.onDateSelect}" update="apodImageVideo apodTitle apodExplanation downloadApodPDF"/>
 						</p:calendar>
 					</div>
 					<h:panelGroup id="downloadApodPDF">
-						<c:if test="#{apodController.apod.media_type=='image'}">
+						<c:if test="#{apodViewBean.apod.media_type=='image'}">
 							<div class="ui-grid-col-6">
-								<p:commandLink action="#{downloadController.downloadApodPDF(apodController.apod)}" ajax="false">
+								<p:commandLink action="#{downloadRequestBean.downloadApodPDF(apodViewBean.apod)}" ajax="false">
 									<h:graphicImage value="images/download_apod.png" class="download-apod-pdf"/>
 								</p:commandLink>
 							</div>
@@ -39,18 +39,18 @@
 		<div class="apod-image-container">
 			<h:panelGroup id="apodImageVideo">
 				<c:choose>
-					<c:when test="#{apodController.apod.media_type=='image'}">
-						<h:graphicImage class="apod-image" url="#{apodController.apod.url}" id="apodImage"/>
+					<c:when test="#{apodViewBean.apod.media_type=='image'}">
+						<h:graphicImage class="apod-image" url="#{apodViewBean.apod.url}" id="apodImage"/>
 					</c:when>
-					<c:when test="#{apodController.apod.media_type=='video'}">
-						<iframe width="100%" height="600" src="#{apodController.apod.url}" frameborder="0" allowfullscreen="true" id="apodVideo"></iframe>
+					<c:when test="#{apodViewBean.apod.media_type=='video'}">
+						<iframe width="100%" height="600" src="#{apodViewBean.apod.url}" frameborder="0" allowfullscreen="true" id="apodVideo"></iframe>
 					</c:when>
 				</c:choose>
 			</h:panelGroup>
 		</div>	
 		
 		<div class="apod-explanation-container">
-	    	<b><h:outputText value="#{apodController.apod.explanation}" name="apodExplanation" id="apodExplanation" class="apod-explanation"/></b><br/>
+	    	<b><h:outputText value="#{apodViewBean.apod.explanation}" name="apodExplanation" id="apodExplanation" class="apod-explanation"/></b><br/>
 		</div>
 
 		<div class="apod-list-url-container">

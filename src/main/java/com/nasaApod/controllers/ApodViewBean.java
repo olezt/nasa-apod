@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
 
@@ -18,23 +19,26 @@ import lombok.Setter;
 
 @ManagedBean
 @ViewScoped
-public class ApodController {
+public class ApodViewBean {
 
 	@Getter @Setter 
 	private Apod apod;
 	
 	@Getter
 	private Date maxCalendarDate = new Date();
+
+	private String requestedDate;
 	
 	@ManagedProperty(value="#{apodService}")
 	@Setter
 	private ApodService apodService;
 	
-	public ApodController() {}
+	public ApodViewBean() {}
 
 	@PostConstruct
 	public void init() {
-		getApod(null);
+		requestedDate = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("date");
+		getApod(requestedDate);
 	}
 
 	public void getApod(String stringDate) {

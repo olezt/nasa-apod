@@ -21,7 +21,7 @@ import lombok.Setter;
 
 @ManagedBean
 @ViewScoped
-public class ApodListController {
+public class ApodListViewBean {
 
 	@Getter @Setter 
 	private List<Apod> apodList = new ArrayList<Apod>();
@@ -30,7 +30,7 @@ public class ApodListController {
 	@Setter
 	private ApodService apodService;
 	
-	public ApodListController() {}
+	public ApodListViewBean() {}
 
 	@PostConstruct
 	public void init() {
