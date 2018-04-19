@@ -15,6 +15,7 @@ public final class Constants {
 	public static final String APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_TITLE = "Title:";
 	public static final String APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_COPYRIGHT = "Copyright:";
 	public static final String APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_EXPLANATION = "Explanation:";
+	public static final String APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_IMAGE_ERROR = "Error image occured.";
 	
 	public static final String APOD_VIEW_BEAN_DATE_PARAM_NAME = "date";
 

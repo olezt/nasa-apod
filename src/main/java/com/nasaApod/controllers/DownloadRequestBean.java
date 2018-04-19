@@ -2,7 +2,6 @@ package com.nasaApod.controllers;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.faces.bean.ManagedBean;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.util.StringUtils;
 
+import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
@@ -38,10 +38,8 @@ public class DownloadRequestBean {
 	 * @param document
 	 * @param apod
 	 * @throws DocumentException
-	 * @throws MalformedURLException
-	 * @throws IOException
 	 */
-	public void createAllQuotesPDF(Document document, Apod apod) throws DocumentException, MalformedURLException, IOException {
+	public void createAllQuotesPDF(Document document, Apod apod) throws DocumentException {
         Font headerFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 15);
         Font cellFont = FontFactory.getFont(FontFactory.COURIER, 7);
         
@@ -49,10 +47,18 @@ public class DownloadRequestBean {
 		apodTable.setWidthPercentage(90);
 
 		//image cell
-		Image img = Image.getInstance(new URL(apod.getUrl()));
-		PdfPCell imgCell = new PdfPCell(img, true);
+		PdfPCell imgCell = new PdfPCell();
 		imgCell.setColspan(2);
+		try {
+			Image img = Image.getInstance(new URL(apod.getUrl()));
+			imgCell.setImage(img);
+		} catch (BadElementException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			imgCell.setPhrase(new Phrase(Constants.APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_IMAGE_ERROR, cellFont));
+		}
 		apodTable.addCell(imgCell);
+		
 		//title cells
 		apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_TITLE, headerFont)));
 		apodTable.addCell(new PdfPCell(new Phrase(apod.getTitle(), cellFont)));
