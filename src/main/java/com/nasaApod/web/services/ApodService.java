@@ -1,16 +1,22 @@
 package com.nasaApod.web.services;
 
-import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.nasaApod.Constants;
 import com.nasaApod.entities.Apod;
 
-@Service
+@ManagedBean(name="apodService")
+@SessionScoped
 public class ApodService {
 
-	public static Apod getApod(String stringDate) throws Exception{
+	public Apod getApod(String stringDate) throws Exception{
         RestTemplate restTemplate = new RestTemplate();
         
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(Constants.APOD_API)

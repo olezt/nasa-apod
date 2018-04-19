@@ -5,10 +5,10 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.SelectEvent;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nasaApod.entities.Apod;
 import com.nasaApod.web.services.ApodService;
@@ -26,8 +26,9 @@ public class ApodController {
 	@Getter
 	private Date maxCalendarDate = new Date();
 	
-	@Autowired
-	ApodService apodService;
+	@ManagedProperty(value="#{apodService}")
+	@Setter
+	private ApodService apodService;
 	
 	public ApodController() {}
 
