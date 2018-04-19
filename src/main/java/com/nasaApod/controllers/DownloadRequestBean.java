@@ -54,15 +54,15 @@ public class DownloadRequestBean {
 		imgCell.setColspan(2);
 		apodTable.addCell(imgCell);
 		//title cells
-		apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_CONTROLLER_PDF_CELL_TITLE, headerFont)));
+		apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_TITLE, headerFont)));
 		apodTable.addCell(new PdfPCell(new Phrase(apod.getTitle(), cellFont)));
 		//copyright cells
 		if(!StringUtils.isEmpty(apod.getCopyright())){
-			apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_CONTROLLER_PDF_CELL_COPYRIGHT, headerFont)));
+			apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_COPYRIGHT, headerFont)));
 			apodTable.addCell(new PdfPCell(new Phrase(apod.getCopyright(), cellFont)));
 		}
 		//explanation cells
-		apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_CONTROLLER_PDF_CELL_EXPLANATION, headerFont)));
+		apodTable.addCell(new PdfPCell(new Phrase(Constants.APOD_DOWNLOAD_REQUEST_BEAN_PDF_CELL_EXPLANATION, headerFont)));
 		apodTable.addCell(new PdfPCell(new Phrase(apod.getExplanation(), cellFont)));
 
         document.add(apodTable);

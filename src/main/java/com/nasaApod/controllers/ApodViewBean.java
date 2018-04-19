@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
 
+import com.nasaApod.Constants;
 import com.nasaApod.entities.Apod;
 import com.nasaApod.web.services.ApodService;
 
@@ -37,10 +38,16 @@ public class ApodViewBean {
 
 	@PostConstruct
 	public void init() {
-		requestedDate = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("date");
+		//retrieve date url param if exists
+		requestedDate = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(Constants.APOD_VIEW_BEAN_DATE_PARAM_NAME);
+		//init apod
 		getApod(requestedDate);
 	}
 
+	/**
+	 * Get apod of the given date
+	 * @param stringDate
+	 */
 	public void getApod(String stringDate) {
 		try {
 			apod = apodService.getApod(stringDate);
@@ -50,8 +57,12 @@ public class ApodViewBean {
 		}
 	}
 	
+	/**
+	 * Update apod using the selected date
+	 * @param event
+	 */
 	public void onDateSelect(SelectEvent event) {
-	    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	    SimpleDateFormat format = new SimpleDateFormat(Constants.APOD_API_ACCEPTABLE_DATE_FORMAT);
 	    getApod(format.format(event.getObject()));
 	}
 

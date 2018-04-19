@@ -16,6 +16,12 @@ import com.nasaApod.entities.Apod;
 @SessionScoped
 public class ApodService {
 
+	/**
+	 * Retrieve an Apod object using the given date
+	 * @param stringDate
+	 * @return
+	 * @throws Exception
+	 */
 	public Apod getApod(String stringDate) throws Exception{
         RestTemplate restTemplate = new RestTemplate();
         
@@ -27,6 +33,12 @@ public class ApodService {
         return apod;
 	}
 
+	/**
+	 * Retrieve a list of Apod objects between the given string dates
+	 * @param startStringDate
+	 * @param endStringDate
+	 * @return
+	 */
 	public List<Apod> getApodList(String startStringDate, String endStringDate) {
 		
 		RestTemplate restTemplate = new RestTemplate();

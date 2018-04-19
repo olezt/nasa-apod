@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import com.nasaApod.Constants;
 import com.nasaApod.entities.Apod;
 import com.nasaApod.web.services.ApodService;
 
@@ -31,19 +32,25 @@ public class ApodListViewBean {
 	@Setter
 	private ApodService apodService;
 	
-	private Date lastLoadedDate;
+	//Date of the last loaded apod
+	private Date lastLoadedApodDate;
 	
 	public ApodListViewBean() {}
 
 	@PostConstruct
 	public void init() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		lastLoadedDate = getDateXDaysFromYDate(new Date(), -30);
-
-		getApodList(format.format(lastLoadedDate), format.format(new Date()));
+		SimpleDateFormat format = new SimpleDateFormat(Constants.APOD_API_ACCEPTABLE_DATE_FORMAT);
+		lastLoadedApodDate = getDateXDaysFromYDate(new Date(), -30);
+		//initialize apodList with the latest 30 apods
+		updateApodList(format.format(lastLoadedApodDate), format.format(new Date()));
 	}
 
-	public void getApodList(String startStringDate,String endStringDate) {
+	/**
+	 * Update apodList with the apods between the given dates
+	 * @param startStringDate
+	 * @param endStringDate
+	 */
+	public void updateApodList(String startStringDate,String endStringDate) {
 		try {
 			List<Apod> tempApodList = apodService.getApodList(startStringDate, endStringDate);
 			//reverse the order of the newly returned list, in order to have the latest date as first
@@ -55,6 +62,12 @@ public class ApodListViewBean {
 		}
 	}
 	
+	/**
+	 * Returns a Date object X days +- from the given Y Date
+	 * @param yDate
+	 * @param xDays
+	 * @return
+	 */
 	private Date getDateXDaysFromYDate(Date yDate, int xDays) {
 		Calendar cal = new GregorianCalendar();
 		cal.setTime(yDate);
@@ -63,14 +76,18 @@ public class ApodListViewBean {
 		return resultDate;
 	}
 	
+	/**
+	 * Update apodList, loading 30 more apods starting from the last one
+	 * @throws ParseException
+	 */
 	public void loadMoreApods() throws ParseException {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat(Constants.APOD_API_ACCEPTABLE_DATE_FORMAT);
 
 		//get as end date a day before last loaded date
-		Date endDate = getDateXDaysFromYDate(lastLoadedDate, -1);
+		Date endDate = getDateXDaysFromYDate(lastLoadedApodDate, -1);
 		//update lastLoadedDate as 30 days before previous lastLoadedDate
-		lastLoadedDate = getDateXDaysFromYDate(lastLoadedDate, -30);
+		lastLoadedApodDate = getDateXDaysFromYDate(lastLoadedApodDate, -30);
 
-		getApodList(format.format(lastLoadedDate), format.format(endDate));
+		updateApodList(format.format(lastLoadedApodDate), format.format(endDate));
 	}
 }

@@ -3,6 +3,11 @@ package com.nasaApod.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Apod represents the Astronomy Picture object Of the Day
+ * @author Olezt
+ *
+ */
 public class Apod {
 
 	@Getter @Setter private String service_version;
