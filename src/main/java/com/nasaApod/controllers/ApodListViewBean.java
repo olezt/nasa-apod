@@ -86,7 +86,7 @@ public class ApodListViewBean implements Serializable {
 	 * Update apodList, loading 30 more apods starting from the last one
 	 * @throws ParseException
 	 */
-	public void loadMoreApods() throws ParseException {
+	public void loadMoreApods() {
 		SimpleDateFormat format = new SimpleDateFormat(Constants.APOD_API_ACCEPTABLE_DATE_FORMAT);
 
 		//get as end date a day before last loaded date
