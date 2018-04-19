@@ -39,7 +39,7 @@ public class DownloadRequestBean {
 	 * @param apod
 	 * @throws DocumentException
 	 */
-	public void createAllQuotesPDF(Document document, Apod apod) throws DocumentException {
+	public void createApodPDF(Document document, Apod apod) throws DocumentException {
         Font headerFont = FontFactory.getFont(FontFactory.COURIER_BOLD, 15);
         Font cellFont = FontFactory.getFont(FontFactory.COURIER, 7);
         
@@ -97,7 +97,7 @@ public class DownloadRequestBean {
             
             document.open();
         	
-			createAllQuotesPDF(document, apod);
+			createApodPDF(document, apod);
 		} catch (DocumentException | IOException e) {
 			e.printStackTrace();
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
