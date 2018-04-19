@@ -14,15 +14,20 @@
 	
 	<h:body>
 		<h:form>
-		    <p:dataList value="#{apodListViewBean.apodList}" var="apod" class="apod-list-container">
-		        <f:facet name="header">
-		            NASA Apod
-		        </f:facet>
-		        [#{apod.date}]: 
-		        <h:link outcome="index.xhtml" value="#{apod.title}">
-		        	<f:param name="date" value="#{apod.date}"/>
-		        </h:link>
-		    </p:dataList>
+			<div class="apod-list-container">
+			    <p:dataList id="apodList" value="#{apodListViewBean.apodList}" var="apod">
+			        <f:facet name="header">
+			            NASA Apod
+			        </f:facet>
+			        [#{apod.date}]: 
+			        <h:link outcome="index.xhtml" value="#{apod.title}">
+			        	<f:param name="date" value="#{apod.date}"/>
+			        </h:link>
+			    </p:dataList>
+			    <p:commandLink action="#{apodListViewBean.loadMoreApods}" ajax="false" update="apodList">
+					Load More...
+				</p:commandLink>
+			</div>
 	    </h:form>
 	</h:body>
 </html>
